@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.SimpleDateFormat;
-
 @RestController
 @CrossOrigin
 public class LoginController {
@@ -28,6 +26,7 @@ public class LoginController {
 
     @PostMapping("/validate")
     public String validateJWT(@RequestBody String jwt){
+        System.out.println("HEY");
         return jwtService.validateJwt(jwt) ? "SUCCESS":"FAILURE";
     }
 }
