@@ -1,18 +1,21 @@
 package dev.titans.authentication;
 
-import dev.titans.entities.User;
-import dev.titans.repos.UserRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
+import org.springframework.jms.core.JmsTemplate;
 
 @SpringBootTest
 class AuthenticationApplicationTests {
 
+	@Autowired
+	JmsTemplate jmsTemplate;
+
 	@Test
 	void contextLoads() {
+		String message = "The Login was performed at 10:00am, Batman";
+		jmsTemplate.convertAndSend("titan-important-events", message);
+
 	}
 
 }

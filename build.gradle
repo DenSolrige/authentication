@@ -11,6 +11,9 @@ sourceCompatibility = '1.8'
 repositories {
 	mavenCentral()
 }
+ext {
+	set('springCloudAzureVersion', "4.3.0")
+}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
@@ -18,8 +21,20 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation group: 'com.auth0', name: 'java-jwt', version: '4.0.0'
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
+	implementation group: 'com.azure.spring', name: 'azure-spring-boot-starter-servicebus-jms', version: '4.0.0'
+	implementation 'com.azure.spring:spring-cloud-azure-starter'
+
+}
+dependencyManagement {
+	imports {
+		mavenBom "com.azure.spring:spring-cloud-azure-dependencies:${springCloudAzureVersion}"
+
+	}
+
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
-}
+
+
+	tasks.named('test') {
+		useJUnitPlatform()
+	}
