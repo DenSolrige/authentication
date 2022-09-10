@@ -23,18 +23,13 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
 	implementation group: 'com.azure.spring', name: 'azure-spring-boot-starter-servicebus-jms', version: '4.0.0'
 	implementation 'com.azure.spring:spring-cloud-azure-starter'
-
 }
 dependencyManagement {
 	imports {
 		mavenBom "com.azure.spring:spring-cloud-azure-dependencies:${springCloudAzureVersion}"
-
 	}
-
 }
 
-
-
-	tasks.named('test') {
-		useJUnitPlatform()
-	}
+tasks.named('test') {
+	useJUnitPlatform()
+}
