@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
+
 @RestController
 @CrossOrigin
 public class LoginController {
@@ -24,7 +26,7 @@ public class LoginController {
         return loginService.authenticateUser(loginCredentials);
     }
 
-    @PostMapping("/validate") // some endpoints are not RESTFUL they just expose a service/function in the application
+    @PostMapping("/validate")
     public String validateJWT(@RequestBody String jwt){
         return jwtService.validateJwt(jwt) ? "SUCCESS":"FAILURE";
     }
