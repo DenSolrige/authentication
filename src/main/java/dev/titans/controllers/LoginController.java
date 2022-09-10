@@ -26,7 +26,6 @@ public class LoginController {
 
     @PostMapping("/validate")
     public String validateJWT(@RequestBody String jwt){
-        System.out.println("HEY");
         return jwtService.validateJwt(jwt) ? "SUCCESS":"FAILURE";
     }
 }
